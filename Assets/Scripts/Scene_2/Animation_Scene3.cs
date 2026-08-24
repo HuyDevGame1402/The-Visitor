@@ -43,6 +43,8 @@ public class Animation_Scene3 : MonoBehaviour
         "O_P2P2"    // Phím K (Index 20)
     };
 
+    public Visitor_Scene2 visitor_scene2;
+
     private readonly KeyCode[] _testKeys = new KeyCode[]
     {
         KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
@@ -262,6 +264,7 @@ public class Animation_Scene3 : MonoBehaviour
         visitor.isReady = false;
         PlayAnimationByName(_sequences[17], () => {
             visitor.isReady = true;
+            visitor_scene2.PlayAnimationSlideOut();
             scene3.SetActive(false);
         });
     }

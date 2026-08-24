@@ -12,6 +12,13 @@ public class DoorHandle : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (cat.isReadyOpenDoor)
+        {
+            // animation cat
+            cat.PlayAnimationOpenDoor();
+            return;
+        }
+
         if (cat.isNearDoor)
         {
             boxCollider2D.enabled = false;

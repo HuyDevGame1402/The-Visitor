@@ -35,6 +35,7 @@ public class Visitor_Scene2 : MonoBehaviour
 
     public BackgroundAnimation backgroundAnimationScene2;
     public Cat_Scene2 cat;
+    public GameObject collisionAttackCat;
 
     private void Start()
     {
@@ -62,7 +63,6 @@ public class Visitor_Scene2 : MonoBehaviour
         animationSwf.sequenceName = _sequences[2];
         animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Loop;
         animationSwf.PlayTestAnimation();
-        isReadyEat = true;
     }
 
     public void PlayAnimationEatApple()
@@ -129,5 +129,22 @@ public class Visitor_Scene2 : MonoBehaviour
                 isReadyAttackTree = true;
             });
         });
+    }
+
+    public void PlayAnimationSlideOut()
+    {
+        animationSwf.sequenceName = _sequences[11];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            collisionAttackCat.SetActive(true);
+        });
+    }
+
+    public void PlayAnimationHideVisitor()
+    {
+        animationSwf.sequenceName = _sequences[16];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation();
     }
 }

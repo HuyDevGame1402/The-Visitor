@@ -26,6 +26,11 @@ public class Cat_Scene2 : MonoBehaviour
         "O_PounceVisitor"    // Phím D (Index 13)
     };
 
+    [SerializeField] private GameObject _scene3;
+
+    public bool isReadyOpenDoor;
+    public BoxCollider2D collisionHandler;
+
     private void Start()
     {
         PlayAnimationStart();
@@ -39,6 +44,7 @@ public class Cat_Scene2 : MonoBehaviour
         {
             PlayAnimationStart();
             visitor.PlayAnimationIdle();
+            visitor.isReadyEat = true;
             BoxCollider2D.enabled = true;
         });
     }
@@ -88,7 +94,10 @@ public class Cat_Scene2 : MonoBehaviour
         {
             animationSwf.sequenceName = _catSequences[9];
             animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Loop;
-            animationSwf.PlayTestAnimation();
+            animationSwf.PlayTestAnimation(() =>
+            {
+                _scene3.SetActive(true);
+            });
         });
     }
 
@@ -99,6 +108,31 @@ public class Cat_Scene2 : MonoBehaviour
         animationSwf.PlayTestAnimation(() =>
         {
             PlayAnimationCatAngry();
+        });
+    }
+
+    public void PlayAnimationBum()
+    {
+        animationSwf.sequenceName = _catSequences[11];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            isReadyOpenDoor = true;
+            collisionHandler.enabled = true;
+        });
+    }
+    public void PlayAnimationOpenDoor()
+    {
+        animationSwf.sequenceName = _catSequences[12];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            animationSwf.sequenceName = _catSequences[13];
+            animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Loop;
+            animationSwf.PlayTestAnimation(() =>
+            {
+                // chuyển scene 4
+            });
         });
     }
 }

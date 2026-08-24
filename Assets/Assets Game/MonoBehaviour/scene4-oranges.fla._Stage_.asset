@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81fe925196120246486013f4073d19b, type: 3}
+  m_Name: scene4-oranges.fla._Stage_
+  m_EditorClassIdentifier:
+  Name: _Stage_
+  Sprite: {fileID: 21300000, guid: 37b80b71d1830434485dcbf9aefd91ce, type: 2}
+  FrameRate: 24
+  AssetGUID: eec34650982d6404bb768a2ff00e48a7
+  Sequences:
+  - Name: L_Idle
+    Frames:
+    - Labels: []
+      MeshData:
+        SubMeshes:
+        - StartVertex: 0
+          IndexCount: 6
+        Vertices:
+        - {x: 2.3656938, y: -1.2559476}
+        - {x: 3.026899, y: -1.2559476}
+        - {x: 3.026899, y: -1.5456772}
+        - {x: 2.3656938, y: -1.5456772}
+        UVs: ff5c0000ff96ff(3
+        AddColors: 0000000000000000
+        MulColors: 4c014c0100024c01
+      Materials:
+      - {fileID: 2100000, guid: 949e2c782c8fa784faa6c9a0aa9d99f4, type: 2}

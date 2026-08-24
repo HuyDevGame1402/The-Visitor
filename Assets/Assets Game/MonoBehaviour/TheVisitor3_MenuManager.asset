@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a67595be802e3ed8d21fa0b4e0c11e, type: 3}
+  m_Name: TheVisitor3_MenuManager
+  m_EditorClassIdentifier:
+  eventSystem: {fileID: 0}
+  menus:
+  - {fileID: 11400000, guid: 5cf3ce1fbf4a8e040bdc5cf6c15f7c7d, type: 2}
+  - {fileID: 11400000, guid: c59042f2ef194a24e8ae332abf0bcffd, type: 2}
+  - {fileID: 11400000, guid: 64ac3b3f820b07e428e04c49d897857a, type: 2}
+  - {fileID: 11400000, guid: 99630b85eab787448b0387509c3758bd, type: 2}
+  - {fileID: 11400000, guid: 1c0d9794f1eb7f647be51d1af33cb1df, type: 2}
+  - {fileID: 11400000, guid: 06133eeca28832c408293b5bae40f2f0, type: 2}
+  - {fileID: 11400000, guid: a00eb1c4f85c8094a90a132d8248404c, type: 2}
+  - {fileID: 11400000, guid: ee5a94e15a682144ea0541fa5271df90, type: 2}
+  - {fileID: 11400000, guid: a455e105f1a5d294b9f7a6c3e424ec2f, type: 2}
+  - {fileID: 11400000, guid: 6adca2e925fee4e418bd0f59519d3a69, type: 2}
+  - {fileID: 11400000, guid: 878052bd9d36184489aa011423cdef56, type: 2}
+  - {fileID: 11400000, guid: 6bc77396b5ccaa04c93e875f86d4a388, type: 2}
+  globalDepth: 0
+  pauseTexture: {fileID: 0}
+  scaleTextEffects: 1
+  keyboardControlWhenPaused: 1
+  keyboardControlWhenDialogOptions: 1
+  disableMouseIfKeyboardControlling: 1

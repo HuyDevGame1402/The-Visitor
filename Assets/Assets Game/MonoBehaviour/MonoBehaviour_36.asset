@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9760d59c048eae59fb41ca6963495b7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  menuSource: 0
+  canvas: {fileID: 0}
+  canvasID: 0
+  rectTransform: {fileID: 0}
+  rectTransformID: 0
+  uiTransitionType: 0
+  uiPositionType: 0
+  isEditing: 0
+  isLocked: 0
+  id: 13
+  title: TheVisitor_SettingsMenu1
+  manualSize: {x: 50, y: 50}
+  positionType: 0
+  manualPosition: {x: 590, y: 331.5}
+  positionSmoothing: 0
+  alignment: 4
+  toggleKey:
+  ignoreMouseClicks: 0
+  pauseWhenEnabled: 1
+  showWhenPaused: 0
+  canClickInCutscene: 0
+  enabledOnStart: 0
+  actionListOnTurnOn: {fileID: 0}
+  actionListOnTurnOff: {fileID: 0}
+  updateWhenFadeOut: 1
+  fitWithinScreen: 1
+  backgroundTexture: {fileID: 0}
+  visibleElements:
+  - {fileID: 11400000, guid: 06be16998554f4747993d91b97461907, type: 2}
+  - {fileID: 11400000, guid: 8fb12dab21c5a354f986aafc1085b1be, type: 2}
+  - {fileID: 11400000, guid: 4488f7457fc004c4ab68dc24b37ecc47, type: 2}
+  - {fileID: 11400000, guid: d6497dd8f2ef30945994756be2c9d2d3, type: 2}
+  - {fileID: 11400000, guid: 12a537c144d90ee448b5579011decf7b, type: 2}
+  - {fileID: 11400000, guid: c223f0dbc0810af469e2565d8ee99154, type: 2}
+  transitionProgress: 0
+  appearType: 0
+  speechMenuType: 0
+  speechMenuLimit: 0
+  limitToCharacters:
+  forceSubtitles: 0
+  selected_element: {fileID: 0}
+  selected_slot: 0
+  autoSelectFirstVisibleElement: 0
+  firstSelectedElement:
+  elements:
+  - {fileID: 11400000, guid: 06be16998554f4747993d91b97461907, type: 2}
+  - {fileID: 11400000, guid: 8fb12dab21c5a354f986aafc1085b1be, type: 2}
+  - {fileID: 11400000, guid: 4488f7457fc004c4ab68dc24b37ecc47, type: 2}
+  - {fileID: 11400000, guid: d6497dd8f2ef30945994756be2c9d2d3, type: 2}
+  - {fileID: 11400000, guid: 12a537c144d90ee448b5579011decf7b, type: 2}
+  - {fileID: 11400000, guid: c223f0dbc0810af469e2565d8ee99154, type: 2}
+  spacing: 0
+  sizeType: 1
+  autoSizeEveryFrame: 0
+  orientation: 1
+  transitionType: 4
+  panDirection: 0
+  panMovement: 0
+  timeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panDistance: 0.5
+  fadeSpeed: 0
+  zoomAnchor: 4
+  zoomElements: 0
+  oneMenuPerSpeech: 0
+  biggestElementSize: {x: 80.19999, y: 46.400005}
+  rect:
+    serializedVersion: 2
+    x: 295
+    y: 165.75
+    width: 590
+    height: 331.5

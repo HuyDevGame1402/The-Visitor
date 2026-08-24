@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9760d59c048eae59fb41ca6963495b7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  menuSource: 0
+  canvas: {fileID: 0}
+  canvasID: 0
+  rectTransform: {fileID: 0}
+  rectTransformID: 0
+  uiTransitionType: 0
+  uiPositionType: 0
+  isEditing: 0
+  isLocked: 0
+  id: 6
+  title: TheVisitor_HintsMenu1
+  manualSize: {x: 45, y: 41.877594}
+  positionType: 0
+  manualPosition: {x: 590, y: 393}
+  positionSmoothing: 0
+  alignment: 4
+  toggleKey:
+  ignoreMouseClicks: 0
+  pauseWhenEnabled: 1
+  showWhenPaused: 0
+  canClickInCutscene: 0
+  enabledOnStart: 0
+  actionListOnTurnOn: {fileID: 0}
+  actionListOnTurnOff: {fileID: 0}
+  updateWhenFadeOut: 1
+  fitWithinScreen: 1
+  backgroundTexture: {fileID: 0}
+  visibleElements:
+  - {fileID: 11400000, guid: 0cf0a6a63ccf64746bff4183b804a760, type: 2}
+  - {fileID: 11400000, guid: d7bc8dbec4515ee41ad1a876584c6bdd, type: 2}
+  - {fileID: 11400000, guid: 1fcfa05364ebf064f9be60eb60902418, type: 2}
+  - {fileID: 11400000, guid: 44368355781c08744b1d5c471fc6a3d3, type: 2}
+  transitionProgress: 0
+  appearType: 0
+  speechMenuType: 0
+  speechMenuLimit: 0
+  limitToCharacters:
+  forceSubtitles: 0
+  selected_element: {fileID: 0}
+  selected_slot: 0
+  autoSelectFirstVisibleElement: 0
+  firstSelectedElement:
+  elements:
+  - {fileID: 11400000, guid: 0cf0a6a63ccf64746bff4183b804a760, type: 2}
+  - {fileID: 11400000, guid: d7bc8dbec4515ee41ad1a876584c6bdd, type: 2}
+  - {fileID: 11400000, guid: 1fcfa05364ebf064f9be60eb60902418, type: 2}
+  - {fileID: 11400000, guid: 44368355781c08744b1d5c471fc6a3d3, type: 2}
+  spacing: 0
+  sizeType: 0
+  autoSizeEveryFrame: 0
+  orientation: 0
+  transitionType: 4
+  panDirection: 0
+  panMovement: 0
+  timeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panDistance: 0.5
+  fadeSpeed: 0
+  zoomAnchor: 4
+  zoomElements: 0
+  oneMenuPerSpeech: 0
+  biggestElementSize: {x: 531, y: 329.1579}
+  rect:
+    serializedVersion: 2
+    x: 324.5
+    y: 228.42105
+    width: 531
+    height: 329.1579

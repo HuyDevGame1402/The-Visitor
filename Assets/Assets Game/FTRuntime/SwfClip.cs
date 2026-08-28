@@ -217,57 +217,156 @@ namespace FTRuntime
 			return (array == null || index < 0 || index >= array.Length) ? string.Empty : array[index];
 		}
 
+        /// <summary>
+        /// Bản 1 material
+        /// </summary>
         //internal void Internal_UpdateMesh()
         //{
-        //	if ((bool)_meshFilter && (bool)_meshRenderer && _dirtyMesh)
-        //	{
-        //		SwfClipAsset.Frame currentBakedFrame = GetCurrentBakedFrame();
-        //		if (currentBakedFrame != null)
-        //		{
-        //			_meshFilter.sharedMesh = currentBakedFrame.CachedMesh;
-        //			_meshRenderer.sharedMaterials = currentBakedFrame.Materials;
-        //		}
-        //		else
-        //		{
-        //			_meshFilter.sharedMesh = null;
-        //			_meshRenderer.sharedMaterials = new Material[0];
-        //		}
-        //		_dirtyMesh = false;
-        //	}
+        //    if ((bool)_meshFilter && (bool)_meshRenderer && _dirtyMesh)
+        //    {
+        //        SwfClipAsset.Frame currentBakedFrame = GetCurrentBakedFrame();
+        //        if (currentBakedFrame != null)
+        //        {
+        //            _meshFilter.sharedMesh = currentBakedFrame.CachedMesh;
+
+        //            // KIỂM TRA: Nếu Frame gốc không có Material thì tự tạo Material mặc định
+        //            if (currentBakedFrame.Materials != null && currentBakedFrame.Materials.Length > 0 && currentBakedFrame.Materials[0] != null)
+        //            {
+        //                _meshRenderer.sharedMaterials = currentBakedFrame.Materials;
+        //            }
+        //            else
+        //            {
+        //                // Nếu bị missing, dùng Material Sprites-Default để không bị xám/tím/trong suốt
+        //                if (_meshRenderer.sharedMaterial == null)
+        //                {
+        //                    _meshRenderer.sharedMaterial = Canvas.GetDefaultCanvasMaterial();
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            _meshFilter.sharedMesh = null;
+        //            _meshRenderer.sharedMaterials = new Material[0];
+        //        }
+        //        _dirtyMesh = false;
+        //    }
         //}
 
+
+        /// <summary>
+        /// Bản 2 material
+        /// </summary>
+
+        [Header("Material Override Control")]
+        [Tooltip("Tích chọn = HIỂN THỊ Material. Bỏ tích = ẨN/XÓA Material đó.")]
+        public List<bool> materialVisibilities = new List<bool>();
+        // Hàm kiểm tra xem Element tại index có được ĐÃ TÍCH (Hiển thị) hay không
+        private bool IsElementVisible(int index)
+        {
+            // Nếu list chưa được cài đặt hoặc index vượt quá độ dài list, mặc định cho hiển thị bình thường
+            if (materialVisibilities == null || index >= materialVisibilities.Count)
+            {
+                return true;
+            }
+
+            // Trả về giá trị true/false trực tiếp từ ô bạn đã tích/bỏ tích trên Inspector
+            return materialVisibilities[index];
+        }
 
         internal void Internal_UpdateMesh()
         {
             if ((bool)_meshFilter && (bool)_meshRenderer && _dirtyMesh)
             {
                 SwfClipAsset.Frame currentBakedFrame = GetCurrentBakedFrame();
-                if (currentBakedFrame != null)
+                if (currentBakedFrame != null && currentBakedFrame.CachedMesh != null)
                 {
                     _meshFilter.sharedMesh = currentBakedFrame.CachedMesh;
 
-                    // KIỂM TRA: Nếu Frame gốc không có Material thì tự tạo Material mặc định
-                    if (currentBakedFrame.Materials != null && currentBakedFrame.Materials.Length > 0 && currentBakedFrame.Materials[0] != null)
+                    int subMeshCount = currentBakedFrame.CachedMesh.subMeshCount;
+                    Material[] finalMats = new Material[subMeshCount];
+                    Material[] frameMats = currentBakedFrame.Materials;
+
+                    for (int i = 0; i < subMeshCount; i++)
                     {
-                        _meshRenderer.sharedMaterials = currentBakedFrame.Materials;
-                    }
-                    else
-                    {
-                        // Nếu bị missing, dùng Material Sprites-Default để không bị xám/tím/trong suốt
-                        if (_meshRenderer.sharedMaterial == null)
+                        if (!IsElementVisible(i))
                         {
-                            _meshRenderer.sharedMaterial = Canvas.GetDefaultCanvasMaterial();
+                            finalMats[i] = null;
+                            continue;
+                        }
+
+                        if (frameMats != null && i < frameMats.Length && frameMats[i] != null)
+                        {
+                            finalMats[i] = frameMats[i];
+                        }
+                        else
+                        {
+                            finalMats[i] = Canvas.GetDefaultCanvasMaterial();
                         }
                     }
+
+                    _meshRenderer.sharedMaterials = finalMats;
                 }
                 else
                 {
                     _meshFilter.sharedMesh = null;
                     _meshRenderer.sharedMaterials = new Material[0];
                 }
+
                 _dirtyMesh = false;
+
+                // --- THÊM DÒNG NÀY ---
+                // Đảm bảo Texture luôn được gán lại vào PropertyBlock ngay khi Mesh & Material mới được thiết lập
+                UpdatePropBlock();
             }
         }
+
+        private void UpdatePropBlock()
+        {
+            if ((bool)_meshRenderer)
+            {
+                if (_curPropBlock == null)
+                {
+                    _curPropBlock = new MaterialPropertyBlock();
+                }
+
+                _meshRenderer.GetPropertyBlock(_curPropBlock);
+                _curPropBlock.SetColor(SwfUtils.TintShaderProp, tint);
+
+                Sprite sprite = ((!clip) ? null : clip.Sprite);
+                Texture2D texture2D = ((!sprite || !sprite.texture) ? Texture2D.whiteTexture : sprite.texture);
+                Texture2D texture2D2 = ((!sprite) ? null : sprite.associatedAlphaSplitTexture);
+
+                _curPropBlock.SetTexture(SwfUtils.MainTexShaderProp, (!texture2D) ? Texture2D.whiteTexture : texture2D);
+
+                if ((bool)texture2D2)
+                {
+                    _curPropBlock.SetTexture(SwfUtils.AlphaTexShaderProp, texture2D2);
+                    _curPropBlock.SetFloat(SwfUtils.ExternalAlphaShaderProp, 1f);
+                }
+                else
+                {
+                    _curPropBlock.SetTexture(SwfUtils.AlphaTexShaderProp, Texture2D.whiteTexture);
+                    _curPropBlock.SetFloat(SwfUtils.ExternalAlphaShaderProp, 0f);
+                }
+
+                // Áp dụng PropertyBlock cho các Element được TÍCH (true)
+                int matCount = _meshRenderer.sharedMaterials.Length;
+                for (int i = 0; i < matCount; i++)
+                {
+                    if (IsElementVisible(i))
+                    {
+                        _meshRenderer.SetPropertyBlock(_curPropBlock, i);
+                    }
+                    else
+                    {
+                        // Xóa PropertyBlock nếu ô bị BỎ TÍCH (false)
+                        _meshRenderer.SetPropertyBlock(null, i);
+                    }
+                }
+            }
+        }
+
+		// ------- kết thúc test nhiều material ------------
 
         public void Internal_UpdateAllProperties()
 		{
@@ -342,7 +441,10 @@ namespace FTRuntime
 				}
 			}
 			ChangeCurrentFrame();
-		}
+
+            // --- THÊM DÒNG NÀY ---
+            UpdatePropBlock();
+        }
 
 		private void ChangeCurrentFrame()
 		{
@@ -363,68 +465,42 @@ namespace FTRuntime
 				_sortingGroup.sortingLayerName = sortingLayer;
 			}
 		}
-
+        /// <summary>
+        /// Bản 1 material
+        /// </summary>
         //private void UpdatePropBlock()
         //{
-        //	if ((bool)_meshRenderer)
-        //	{
-        //		if (_curPropBlock == null)
-        //		{
-        //			_curPropBlock = new MaterialPropertyBlock();
-        //		}
-        //		_meshRenderer.GetPropertyBlock(_curPropBlock);
-        //		_curPropBlock.SetColor(SwfUtils.TintShaderProp, tint);
-        //		Sprite sprite = ((!clip) ? null : clip.Sprite);
-        //		Texture2D texture2D = ((!sprite || !sprite.texture) ? Texture2D.whiteTexture : sprite.texture);
-        //		Texture2D texture2D2 = ((!sprite) ? null : sprite.associatedAlphaSplitTexture);
-        //		_curPropBlock.SetTexture(SwfUtils.MainTexShaderProp, (!texture2D) ? Texture2D.whiteTexture : texture2D);
-        //		if ((bool)texture2D2)
-        //		{
-        //			_curPropBlock.SetTexture(SwfUtils.AlphaTexShaderProp, texture2D2);
-        //			_curPropBlock.SetFloat(SwfUtils.ExternalAlphaShaderProp, 1f);
-        //		}
-        //		else
-        //		{
-        //			_curPropBlock.SetTexture(SwfUtils.AlphaTexShaderProp, Texture2D.whiteTexture);
-        //			_curPropBlock.SetFloat(SwfUtils.ExternalAlphaShaderProp, 0f);
-        //		}
-        //		_meshRenderer.SetPropertyBlock(_curPropBlock);
-        //	}
+        //    if ((bool)_meshRenderer)
+        //    {
+        //        // Tự động gán Material mặc định (Sprites-Default) nếu MeshRenderer chưa có Material
+        //        if (_meshRenderer.sharedMaterial == null)
+        //        {
+        //            _meshRenderer.sharedMaterial = Canvas.GetDefaultCanvasMaterial();
+        //        }
+
+        //        if (_curPropBlock == null)
+        //        {
+        //            _curPropBlock = new MaterialPropertyBlock();
+        //        }
+        //        _meshRenderer.GetPropertyBlock(_curPropBlock);
+        //        _curPropBlock.SetColor(SwfUtils.TintShaderProp, tint);
+        //        Sprite sprite = ((!clip) ? null : clip.Sprite);
+        //        Texture2D texture2D = ((!sprite || !sprite.texture) ? Texture2D.whiteTexture : sprite.texture);
+        //        Texture2D texture2D2 = ((!sprite) ? null : sprite.associatedAlphaSplitTexture);
+        //        _curPropBlock.SetTexture(SwfUtils.MainTexShaderProp, (!texture2D) ? Texture2D.whiteTexture : texture2D);
+        //        if ((bool)texture2D2)
+        //        {
+        //            _curPropBlock.SetTexture(SwfUtils.AlphaTexShaderProp, texture2D2);
+        //            _curPropBlock.SetFloat(SwfUtils.ExternalAlphaShaderProp, 1f);
+        //        }
+        //        else
+        //        {
+        //            _curPropBlock.SetTexture(SwfUtils.AlphaTexShaderProp, Texture2D.whiteTexture);
+        //            _curPropBlock.SetFloat(SwfUtils.ExternalAlphaShaderProp, 0f);
+        //        }
+        //        _meshRenderer.SetPropertyBlock(_curPropBlock);
+        //    }
         //}
-
-        private void UpdatePropBlock()
-        {
-            if ((bool)_meshRenderer)
-            {
-                // Tự động gán Material mặc định (Sprites-Default) nếu MeshRenderer chưa có Material
-                if (_meshRenderer.sharedMaterial == null)
-                {
-                    _meshRenderer.sharedMaterial = Canvas.GetDefaultCanvasMaterial();
-                }
-
-                if (_curPropBlock == null)
-                {
-                    _curPropBlock = new MaterialPropertyBlock();
-                }
-                _meshRenderer.GetPropertyBlock(_curPropBlock);
-                _curPropBlock.SetColor(SwfUtils.TintShaderProp, tint);
-                Sprite sprite = ((!clip) ? null : clip.Sprite);
-                Texture2D texture2D = ((!sprite || !sprite.texture) ? Texture2D.whiteTexture : sprite.texture);
-                Texture2D texture2D2 = ((!sprite) ? null : sprite.associatedAlphaSplitTexture);
-                _curPropBlock.SetTexture(SwfUtils.MainTexShaderProp, (!texture2D) ? Texture2D.whiteTexture : texture2D);
-                if ((bool)texture2D2)
-                {
-                    _curPropBlock.SetTexture(SwfUtils.AlphaTexShaderProp, texture2D2);
-                    _curPropBlock.SetFloat(SwfUtils.ExternalAlphaShaderProp, 1f);
-                }
-                else
-                {
-                    _curPropBlock.SetTexture(SwfUtils.AlphaTexShaderProp, Texture2D.whiteTexture);
-                    _curPropBlock.SetFloat(SwfUtils.ExternalAlphaShaderProp, 0f);
-                }
-                _meshRenderer.SetPropertyBlock(_curPropBlock);
-            }
-        }
 
         private void EmitChangeEvents(bool clip, bool sequence, bool current_frame)
 		{

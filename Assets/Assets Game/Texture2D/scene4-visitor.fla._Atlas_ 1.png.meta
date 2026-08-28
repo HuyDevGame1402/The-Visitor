@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: 2c2bb85837d604647b9224ab7989546e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 4
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: scene4-visitor.fla._Atlas_ 1_10
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 724
+        width: 123
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8673fed596a2cd4da542794a54e6b91
+      internalID: 408905876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene4-visitor.fla._Atlas_ 1_11
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 712
+        width: 124
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a6d61a5acff0aa4797467182f2ad3cd
+      internalID: 798621318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene4-visitor.fla._Atlas_ 1_15
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 537
+        width: 79
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89f34bd32f4a7c40890c5d90c4152f8
+      internalID: 102352521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene4-visitor.fla._Atlas_ 1_24
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 0
+        width: 78
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f66a335a98ebd9b49b36361a437efb24
+      internalID: 1247340267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      scene4-visitor.fla._Atlas_ 1_0: -1141861836
+      scene4-visitor.fla._Atlas_ 1_1: 1497052506
+      scene4-visitor.fla._Atlas_ 1_10: 408905876
+      scene4-visitor.fla._Atlas_ 1_11: 798621318
+      scene4-visitor.fla._Atlas_ 1_12: 19423499
+      scene4-visitor.fla._Atlas_ 1_13: 2062441572
+      scene4-visitor.fla._Atlas_ 1_14: -2048065134
+      scene4-visitor.fla._Atlas_ 1_15: 102352521
+      scene4-visitor.fla._Atlas_ 1_16: 1481797708
+      scene4-visitor.fla._Atlas_ 1_17: 2048404240
+      scene4-visitor.fla._Atlas_ 1_18: -1061203407
+      scene4-visitor.fla._Atlas_ 1_19: 435309614
+      scene4-visitor.fla._Atlas_ 1_2: -1617336835
+      scene4-visitor.fla._Atlas_ 1_20: 400179904
+      scene4-visitor.fla._Atlas_ 1_21: -13697922
+      scene4-visitor.fla._Atlas_ 1_22: 1889264025
+      scene4-visitor.fla._Atlas_ 1_23: 1846502793
+      scene4-visitor.fla._Atlas_ 1_24: 1247340267
+      scene4-visitor.fla._Atlas_ 1_3: -1757586011
+      scene4-visitor.fla._Atlas_ 1_4: 1044788199
+      scene4-visitor.fla._Atlas_ 1_5: -1079813902
+      scene4-visitor.fla._Atlas_ 1_6: 310050378
+      scene4-visitor.fla._Atlas_ 1_7: -974252919
+      scene4-visitor.fla._Atlas_ 1_8: -1540839332
+      scene4-visitor.fla._Atlas_ 1_9: -24010422
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

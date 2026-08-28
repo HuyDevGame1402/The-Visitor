@@ -7,7 +7,7 @@ public class TestSwfAnimation : MonoBehaviour
 {
     [Header("Cấu hình Animation")]
     [Tooltip("Nhập tên Sequence cần test (ví dụ: S_Pickup, L_Idle, ...)")]
-    public string sequenceName = "S_Pickup";
+    public string sequenceName = "";
 
     [Tooltip("Chế độ lặp animation")]
     public SwfClipController.LoopModes loopMode = SwfClipController.LoopModes.Once;

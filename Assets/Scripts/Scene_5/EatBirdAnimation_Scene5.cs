@@ -5,6 +5,15 @@ public class EatBirdAnimation_Scene5 : MonoBehaviour
     [Header("References")]
     public TestSwfAnimation animationSwf;
 
+    public bool isReadyAttack = true;
+
+    public GameObject collisionBird1;
+    public bool isFaceToBird;
+    public bool isEatBird;
+
+    public BirdAnimation_Scene5 bird;
+    public GameObject collisionMouth;
+
     private readonly string[] _sequences = new string[]
     {
         "S_Clothes",               // Phím 1
@@ -70,11 +79,69 @@ public class EatBirdAnimation_Scene5 : MonoBehaviour
 
         // Gán tên sequence vào controller
         animationSwf.sequenceName = targetSequence;
-
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Loop;
         // Gọi hàm phát animation
         animationSwf.PlayTestAnimation(() =>
         {
             Debug.Log($"[EatBirdAnimation_Scene5] Chạy xong Sequence: {targetSequence}");
+        });
+    }
+
+    public void PlayAnimationJumpDown()
+    {
+        animationSwf.sequenceName = _sequences[2];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            animationSwf.sequenceName = _sequences[3];
+            animationSwf.PlayTestAnimation(() =>
+            {
+                collisionBird1.SetActive(true);
+                isFaceToBird = true;
+            });
+        });
+    }
+
+    public void PlayAnimationLash()
+    {
+        isReadyAttack = false;
+        animationSwf.sequenceName = _sequences[4];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            isReadyAttack = true;
+        });
+    }
+
+    public void PlayAnimationMoveVisitor()
+    {
+        animationSwf.sequenceName = _sequences[6];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            bird.PlayAnimationEat();
+        });
+    }
+    public void PlayAnimationAttack()
+    {
+        animationSwf.sequenceName = _sequences[7];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            isEatBird = true;
+        });
+    }
+
+    public void PlayAnimationFlyUp()
+    {
+        animationSwf.sequenceName = _sequences[9];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            animationSwf.sequenceName = _sequences[10];
+            animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Loop;
+            animationSwf.PlayTestAnimation();
+            collisionMouth.SetActive(true);
         });
     }
 }

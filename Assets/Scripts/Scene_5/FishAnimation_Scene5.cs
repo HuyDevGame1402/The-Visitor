@@ -10,6 +10,8 @@ public class FishAnimation_Scene5 : MonoBehaviour
     public GameObject collisionInit;
     public GameObject collisionFishVisitor;
 
+    public GameObject collisionBird;
+
     private readonly string[] _sequences = new string[]
     {
         "L_IdleFish",  // Phím 1
@@ -81,6 +83,7 @@ public class FishAnimation_Scene5 : MonoBehaviour
             isReady = true;
             collisionInit.SetActive(false);
             collisionFishVisitor.SetActive(true);
+            collisionBird.SetActive(true);
         });
     }
 

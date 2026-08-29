@@ -5,6 +5,11 @@ public class BirdAnimation_Scene5 : MonoBehaviour
     [Header("References")]
     public TestSwfAnimation animationSwf;
 
+    public bool isReadyAnimationMove;
+    public bool eating;
+
+    public GameObject collisionBird2;
+
     private readonly string[] _sequences = new string[]
     {
         "L_IdleCage", // Phím 1
@@ -91,12 +96,45 @@ public class BirdAnimation_Scene5 : MonoBehaviour
         animationSwf.PlayTestAnimation(() =>
         {
             birdCollision.hasBirdInCage = false;
+            birdCollision.visitor.isReady = true;
         });
     }
 
     public void PlayAnimationCanTip()
     {
         animationSwf.sequenceName = _sequences[3];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation();
+    }
+
+    public void PlayAnimationMove()
+    {
+        isReadyAnimationMove = false;
+        animationSwf.sequenceName = _sequences[2];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            isReadyAnimationMove = true;
+        });
+    }
+
+    public void PlayAnimationEat()
+    {
+        animationSwf.sequenceName = _sequences[4];
+        animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
+        animationSwf.PlayTestAnimation(() =>
+        {
+            eating = true;
+            animationSwf.sequenceName = _sequences[5];
+            animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Loop;
+            animationSwf.PlayTestAnimation();
+            collisionBird2.SetActive(true);
+        });
+    }
+
+    public void PlayAnimationBirdGone()
+    {
+        animationSwf.sequenceName = _sequences[6];
         animationSwf.loopMode = FTRuntime.SwfClipController.LoopModes.Once;
         animationSwf.PlayTestAnimation();
     }

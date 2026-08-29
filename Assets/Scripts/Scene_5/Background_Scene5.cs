@@ -31,7 +31,7 @@ public class Background_Scene5 : MonoBehaviour
         {
             isReady = true;
         });
-        StartCoroutine(CoroutineShowWall());
+        //StartCoroutine(CoroutineShowWall());
     }
 
     private IEnumerator CoroutineStartScene5()

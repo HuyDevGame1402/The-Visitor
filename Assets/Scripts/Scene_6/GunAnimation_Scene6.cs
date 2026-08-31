@@ -7,6 +7,9 @@ public class GunAnimation_Scene6 : MonoBehaviour
 
     public bool isReadyShoot;
 
+    public GameObject collisionShotAttack;
+    public int gunCombat = 0;
+
     private readonly string[] _sequences = new string[]
     {
         "S_Clear",     // Phím 1
@@ -86,16 +89,54 @@ public class GunAnimation_Scene6 : MonoBehaviour
         animationSwf.PlayTestAnimation(() =>
         {
             isReadyShoot = true;
+            collisionShotAttack.SetActive(true);
         });
     }
 
-    public void PlayAnimationShoot()
+    public void PlayAnimationShoot(int bullet)
     {
-        if (isReadyShoot == false) return;
+        isReadyShoot = false;
         animationSwf.sequenceName = _sequences[2];
         animationSwf.PlayTestAnimation(() =>
         {
-            
+            if(bullet == 1)
+            {
+                PlayAnimationFlipGun();
+            }
+            else
+            {
+                isReadyShoot = true;
+            }
         });
+    }
+    public void PlayAnimationFlipGun()
+    {
+        animationSwf.sequenceName = _sequences[3];
+        animationSwf.PlayTestAnimation(() =>
+        {
+            isReadyShoot = true;
+        });
+    }
+    public void PlayAnimationHitGun()
+    {
+        gunCombat += 1;
+        isReadyShoot = false;
+        animationSwf.sequenceName = _sequences[3 + gunCombat];
+        animationSwf.PlayTestAnimation(() =>
+        {
+            if(gunCombat == 2)
+            {
+                PlayAnimationClear();
+            }
+            else
+            {
+                isReadyShoot = true;
+            }
+        });
+    }
+    public void PlayAnimationClear()
+    {
+        animationSwf.sequenceName = _sequences[0];
+        animationSwf.PlayTestAnimation();
     }
 }

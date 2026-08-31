@@ -9,6 +9,11 @@ public class MonsterAnimation_Scene6 : MonoBehaviour
 
     public bool isEndGame;
 
+    public bool isRecover;
+    public int bullet;
+    public bool isReadyHitDamage;
+    public int hitCount;
+
     private readonly string[] _sequences = new string[]
     {
         "L_Idle",                 // Phím 1
@@ -109,5 +114,49 @@ public class MonsterAnimation_Scene6 : MonoBehaviour
     {
         animationSwf.sequenceName = _sequences[2];
         animationSwf.PlayTestAnimation();
+    }
+
+    public void PlayAnimationRecover()
+    {
+        animationSwf.sequenceName = _sequences[3];
+        animationSwf.PlayTestAnimation(() =>
+        {
+            isRecover = true;
+        });
+    }
+    public void PlayAnimationShoot()
+    {
+        bullet += 1;
+        isReadyHitDamage = false;
+        animationSwf.sequenceName = _sequences[9 + bullet];
+        animationSwf.PlayTestAnimation(() =>
+        {
+            if(bullet == 3)
+            {
+                PlayAnimationFallDown();
+            }
+            else
+            {
+                isReadyHitDamage = true;
+            }
+        });
+    }
+    public void PlayAnimationHitDamage()
+    {
+        hitCount += 1;
+        isReadyHitDamage = false;
+        animationSwf.sequenceName = _sequences[13 + hitCount];
+        animationSwf.PlayTestAnimation(() =>
+        {
+            isReadyHitDamage = true;
+        });
+    }
+    public void PlayAnimationFallDown()
+    {
+        animationSwf.sequenceName = _sequences[13];
+        animationSwf.PlayTestAnimation(() =>
+        {
+            isReadyHitDamage = true;
+        });
     }
 }

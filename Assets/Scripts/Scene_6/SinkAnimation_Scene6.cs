@@ -9,6 +9,7 @@ public class SinkAnimation_Scene6 : MonoBehaviour
     public GameObject hairdry;
     public float timeDelay;
     public GameObject collisionWaterInSink;
+    public GameObject collisionShootInSink;
 
     private readonly string[] _sequences = new string[]
     {
@@ -106,7 +107,7 @@ public class SinkAnimation_Scene6 : MonoBehaviour
         animationSwf.sequenceName = _sequences[3];
         animationSwf.PlayTestAnimation(() =>
         {
-
+            collisionShootInSink.SetActive(true);
         });
     }
 
